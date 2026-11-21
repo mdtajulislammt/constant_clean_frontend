@@ -14,7 +14,7 @@ const ALL_DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Satur
 export const business = {
   name: "Constant Clean",
   legalName: "Constant Clean LLC",
-  tagline: "Mobile Auto Detailing",
+  tagline: "Auto Detailing",
   city: "Dublin, CA",
   phone: "(925) 404-4304",
   phoneHref: "tel:+19254044304",
@@ -23,6 +23,7 @@ export const business = {
   email: "ythomas@constantclean.org",
   instagram: "@constantcleanllc",
   instagramUrl: "https://www.instagram.com/constantcleanllc/",
+  /** Future real domain (not live yet). The deployed base URL comes from lib/site.ts. */
   siteUrl: "https://constantclean.org",
   /** Open 7 days. Display rows (Footer etc.). */
   hours: [{ days: "Mon – Sun", time: "8:00 AM – 6:00 PM" }],
@@ -153,6 +154,12 @@ export const paymentMethods: { id: PaymentMethodId; label: string; hint: string;
   { id: "zelle", label: "Zelle", hint: "Pay after service", payNow: false },
   { id: "venmo", label: "Venmo", hint: "Pay after service", payNow: false },
 ];
+
+/** One-line payment summary (FAQ, Terms). */
+export const paymentSummary = "Visa, Mastercard or Google Pay online when you book, or Zelle / Venmo after your service.";
+
+/** Shown on /terms and /privacy. */
+export const legalLastUpdated = "November 2026";
 
 export const paysNow = (id: PaymentMethodId) => paymentMethods.find((m) => m.id === id)?.payNow ?? true;
 export const paymentLabel = (id: PaymentMethodId) => paymentMethods.find((m) => m.id === id)?.label ?? "Card";
@@ -322,7 +329,7 @@ export const faqs = [
   },
   {
     q: "How do I pay?",
-    a: `Visa, Mastercard or Google Pay online when you book, or Zelle / Venmo after your service. ${notificationCopy}`,
+    a: `${paymentSummary} ${notificationCopy}`,
   },
   {
     q: "Can I reschedule or cancel? What about refunds?",

@@ -16,7 +16,7 @@ export default function Logo({ variant = "horizontal", className }: { variant?: 
     <Link href="/" aria-label={`${business.name} — home`} className="inline-flex shrink-0 items-center">
       <Image
         src={src}
-        alt="Constant Clean Auto Detailing logo"
+        alt={`${business.name} ${business.tagline} logo`} // "Constant Clean Auto Detailing logo"
         width={width}
         height={height}
         sizes={defaults[variant].sizes}

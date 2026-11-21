@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ArrowLeft, ArrowRight, Loader2 } from "lucide-react";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { paysNow, SHOW_ADD_ONS, type PackageId } from "@/lib/config";
 import { type CardForm, emptyCard, type Errors, validateStep } from "@/lib/bookingValidation";
@@ -158,6 +159,8 @@ export default function BookingFlow({ initialPackage }: { initialPackage?: Packa
             {!paying && b.step < 6 && <ArrowRight size={16} />}
           </Button>
         </div>
+        {b.step === 6 && <ConsentNote className="mt-4 hidden text-right md:block" />}
+        {b.step === 6 && <ConsentNote className="mt-6 md:hidden" />}
         {b.step !== ACTIVE_STEPS[0] && (
           <button type="button" onClick={handleBack} className="mt-8 inline-flex items-center gap-2 text-[14px] text-muted md:hidden">
             <ArrowLeft size={16} /> Back
@@ -187,6 +190,23 @@ export default function BookingFlow({ initialPackage }: { initialPackage?: Packa
         </div>
       </div>
     </div>
+  );
+}
+
+/** Shown with the confirm button on the review step. */
+function ConsentNote({ className = "" }: { className?: string }) {
+  return (
+    <p className={`text-[13px] text-subtle ${className}`}>
+      By booking, you agree to our{" "}
+      <Link href="/terms" className="text-muted underline underline-offset-4 hover:text-accent">
+        Terms
+      </Link>{" "}
+      and{" "}
+      <Link href="/privacy" className="text-muted underline underline-offset-4 hover:text-accent">
+        Privacy Policy
+      </Link>{" "}
+      and to receive booking texts and emails.
+    </p>
   );
 }
 

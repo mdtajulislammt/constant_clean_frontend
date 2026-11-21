@@ -4,6 +4,7 @@ import Providers from "@/components/Providers";
 import LocalBusinessJsonLd from "@/components/seo/LocalBusinessJsonLd";
 import { business } from "@/lib/config";
 import { media } from "@/lib/media";
+import { siteUrl } from "@/lib/site";
 import "./globals.css";
 
 const alfa = Alfa_Slab_One({ variable: "--font-alfa", weight: "400", subsets: ["latin"], display: "swap" });
@@ -14,7 +15,8 @@ const description =
   "100% mobile car detailing in Dublin, San Ramon, Pleasanton, Danville, Alamo and Walnut Creek. We bring our own water and power. Book online in 2 minutes.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? business.siteUrl),
+  // NEXT_PUBLIC_SITE_URL → Vercel production URL → localhost (see lib/site.ts)
+  metadataBase: new URL(siteUrl),
   title: { default: title, template: "%s | Constant Clean" },
   description,
   keywords: ["mobile car detailing", "Dublin CA", "full detail", "interior steam cleaning", "car maintenance wash", "San Ramon", "Pleasanton", "Danville", "Tri-Valley"],

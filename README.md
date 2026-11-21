@@ -9,6 +9,14 @@ npm run dev      # http://localhost:3000
 npm run build && npm start
 ```
 
+### Environment
+
+Copy `.env.example` to `.env.local` (and add the same variable in Vercel → Settings → Environment Variables):
+
+| Variable | Example | Used for |
+|---|---|---|
+| `NEXT_PUBLIC_SITE_URL` | `https://constant-clean.vercel.app` | `metadataBase`, Open Graph / link-preview image, JSON-LD URLs. If unset, Vercel's production URL is used, then `http://localhost:3010`. Switch to `https://constantclean.org` when that domain is live. |
+
 ## Where things live
 
 | Path | What |

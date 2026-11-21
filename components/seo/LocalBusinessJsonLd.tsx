@@ -1,5 +1,6 @@
 import { business, images, serviceAreas } from "@/lib/config";
 import { media } from "@/lib/media";
+import { absoluteUrl, siteUrl } from "@/lib/site";
 
 /** schema.org AutoWash (a LocalBusiness subtype) for rich results. */
 export default function LocalBusinessJsonLd() {
@@ -9,9 +10,9 @@ export default function LocalBusinessJsonLd() {
     name: business.legalName,
     alternateName: `${business.name} ${business.tagline}`,
     description: business.description,
-    url: business.siteUrl,
-    logo: `${business.siteUrl}${images.logo.full.src}`,
-    image: `${business.siteUrl}${media.og.src}`,
+    url: siteUrl,
+    logo: absoluteUrl(images.logo.full.src),
+    image: absoluteUrl(media.og.src),
     email: business.email,
     telephone: business.phoneE164,
     address: { "@type": "PostalAddress", addressLocality: "Dublin", addressRegion: "CA", addressCountry: "US" },
